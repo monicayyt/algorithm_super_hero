@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Session1
+public class Session1_Feiteng
 {
 
 	// 1. given a set of integer number, find duplicate among them.
@@ -40,7 +40,7 @@ public class Session1
 
 	public static void main( String[] args )
 	{
-		Session1 s = new Session1();
+		Session1_Feiteng s = new Session1_Feiteng();
 		int[] n = { 0, 0, 0, 0 };
 		System.out.println( s.threeSum( n ) );
 
