@@ -46,13 +46,30 @@ public class Session1_Feiteng
 	// [-1, -1, 2]
 	// ]
 
-	List<List<Integer>> threeSum( int[] n )
+	public List<List<Integer>> threeSum_( int[] nums )
 	{
-		Arrays.sort( n );
-		List<List<Integer>> retList = new ArrayList<>();
-		List<Integer> list = new ArrayList<>(), temp;
-
-		return retList;
+		List<List<Integer>> triples = new ArrayList<>();
+		Arrays.sort( nums );
+		int i = 0, last = nums.length - 1;
+		while ( i < last )
+		{
+			int a = nums[i], j = i + 1, k = last;
+			while ( j < k )
+			{
+				int b = nums[j], c = nums[k], sum = a + b + c;
+				if ( sum == 0 )
+					triples.add( Arrays.asList( a, b, c ) );
+				if ( sum <= 0 )
+					while ( nums[j] == b && j < k )
+						j++;
+				if ( sum >= 0 )
+					while ( nums[k] == c && j < k )
+						k--;
+			}
+			while ( nums[i] == a && i < last )
+				i++;
+		}
+		return triples;
 	}
 
 	//
@@ -93,6 +110,7 @@ public class Session1_Feiteng
 	// [2, 6],
 	// [1, 1, 6]
 	// ]
+
 	public List<List<Integer>> combinationSum2( int[] candidates, int target )
 	{
 		List<List<Integer>> retList = new ArrayList<>();
