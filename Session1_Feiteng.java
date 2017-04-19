@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Session1_Feiteng
@@ -46,7 +48,7 @@ public class Session1_Feiteng
 	// [-1, -1, 2]
 	// ]
 
-	public List<List<Integer>> threeSum_( int[] nums )
+	public List<List<Integer>> threeSum( int[] nums )
 	{
 		List<List<Integer>> triples = new ArrayList<>();
 		Arrays.sort( nums );
@@ -73,11 +75,12 @@ public class Session1_Feiteng
 	}
 
 	//
-	// 3. Given a graph shown below, construct your own graph, then output all the nodes based on the constructed graph using BFS, DFS or topological
+	// 3. Given a graph shown below, construct your own graph, then output all
+	// the nodes based on the constructed graph using BFS, DFS or topological
 	// sort;
 	// input:
 	//
-	// Output: 0, 1, 2, 3, 4, 5, 6 (the output order doesn�t matter)
+	// Output: 0, 1, 2, 3, 4, 5, 6 (the output order doesn't matter)
 	// You can use vector, list or map to construct your graph,
 	// For instance, we can construct this graph using vector as follows:
 	// vector<int> nodes = {0, 1, 2, 3, 4, 5, 6};
@@ -93,7 +96,36 @@ public class Session1_Feiteng
 
 	void printNeighbour( int[][] graph )
 	{
+		// guaranteed graph is all connected
+		// No separate loops
+		Map<Integer, Set<Integer>> map = new HashMap<>();
+		for ( int i = 0; i < graph.length; i++ )
+			map.put( i, new HashSet<>() );
+		for ( int i = 0; i < graph.length; i++ )
+		{
+			for ( int j = 0; j < graph[0].length; j++ )
+			{
+				if ( i != j && graph[i][j] > 0 )
+				{
+					map.get( i ).add( j );
+					map.get( j ).add( i );
+				}
+			}
+		}
+		printMap( 0, map, new HashSet<>() );
+		System.out.println();
+	}
 
+	void printMap( int currentPos, Map<Integer, Set<Integer>> map, Set<Integer> visited )
+	{
+		for ( int k : map.get( currentPos ) )
+		{
+			if ( visited.contains( k ) )
+				continue;
+			visited.add( k );
+			System.out.printf( "%d ", k );
+			printMap( k, map, visited );
+		}
 	}
 
 	// 4. Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to
