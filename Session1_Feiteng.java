@@ -60,7 +60,7 @@ public class Session1_Feiteng
 	// sort;
 	// input:
 	//
-	// Output: 0, 1, 2, 3, 4, 5, 6 (the output order doesn’t matter)
+	// Output: 0, 1, 2, 3, 4, 5, 6 (the output order doesnï¿½t matter)
 	// You can use vector, list or map to construct your graph,
 	// For instance, we can construct this graph using vector as follows:
 	// vector<int> nodes = {0, 1, 2, 3, 4, 5, 6};
@@ -93,4 +93,33 @@ public class Session1_Feiteng
 	// [2, 6],
 	// [1, 1, 6]
 	// ]
+	public List<List<Integer>> combinationSum2( int[] candidates, int target )
+	{
+		List<List<Integer>> retList = new ArrayList<>();
+		Arrays.sort( candidates );
+		getComb2( candidates, target, 0, retList, new ArrayList<>() );
+		return retList;
+	}
+
+	void getComb2( int[] n, int target, int s, List<List<Integer>> rList, List<Integer> cList )
+	{
+		if ( target == 0 )
+		{
+			rList.add( new ArrayList<>( cList ) );
+			return;
+		}
+		if ( target < 0 )
+			return;
+		for ( int i = s; i < n.length; i++ )
+		{
+			// had hard time coming up with solution for duplicate numbers
+			// originally used Set to add all temp list
+			// this if from top solution
+			if ( i > s && n[i] == n[i - 1] )
+				continue;
+			cList.add( n[i] );
+			getComb2( n, target - n[i], i + 1, rList, cList );
+			cList.remove( cList.size() - 1 );
+		}
+	}
 }
