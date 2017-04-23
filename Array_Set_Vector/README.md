@@ -1,3 +1,4 @@
+EASY:
 1. given a set of integer number, find duplicate among them.
 Input  : arr[] = {1, 5, 2, 1, 4, 3, -1, 7, 2, 8, 9, 5}
 Output : Duplicate item are : 5 2 1 
