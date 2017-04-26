@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Session1_Feiteng
+public class S1_Vector_List_FL
 {
 
 	public static void main( String[] args )
 	{
-		Session1_Feiteng s = new Session1_Feiteng();
+		S1_Vector_List_FL s = new S1_Vector_List_FL();
 		int[] n = { 0, 0, 0, 0 };
 		System.out.println( s.threeSum( n ) );
 
